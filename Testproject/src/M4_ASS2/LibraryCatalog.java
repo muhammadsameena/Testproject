@@ -1,4 +1,4 @@
-package M4_Ass2;
+package M4_ASS2;
 import java.util.Scanner;
 public class LibraryCatalog {
 	

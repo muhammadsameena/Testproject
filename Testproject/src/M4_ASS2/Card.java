@@ -1,4 +1,4 @@
-package M4_Ass2;
+package M4_ASS2;
 
 public class Card {
 	String title;
