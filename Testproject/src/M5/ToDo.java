@@ -1,45 +1,100 @@
 package M5;
-
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Scanner;
 public class ToDo {
-	 String task_name[];
-	    String task_des[];
-	    String date[];
-	    String stat[];
-	    static int count = 0;
-	    Task ts[];
-	    
-	    ToDo() {
-	        this.task_name = new String[10];
-	        this.task_des = new String[10];
-	        this.date = new  String[10];
-	        this.stat = new String[10];
-	        this.ts = new Task[10];
-  }
-	    public void addTask(Task l) {
-	        task_name[count] = l.task_name;
-	        task_des[count] = l.task_description;
-	        date[count] = l.date;
-	        stat[count] = l.status;
-	        ts[count] = l;
-	        count++;
-	        System.out.println(count);
+	Task tasks[];
+	Scanner sc=new Scanner(System.in);
+	int index=0;
+	
+	ToDo(int n){
+		tasks=new Task[n];
+	}
+	
+	public void addTask() {		
+		 	
+		try {
+			System.out.println("enter task name");
+			String name=sc.next();
+			System.out.println("enter description");
+			sc.next();
+			String desc=sc.nextLine();
+			System.out.println("enter status");
+			String status=sc.next();
+			System.out.println("enter due date in dd/mm/yyyy format");
+			String sDate1=sc.next();
+			Date date1=new SimpleDateFormat("dd/MM/yyyy").parse(sDate1);
+			Task t=new Task();
+			t.setTaskName(name);
+			t.setDescp(desc);
+			t.setStatus(status);
+			t.setDueDate(sDate1);
+			tasks[index]=t;
+			index++;
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			System.out.println(e.getMessage());
+		}
+		
+		
+		
+	}
+	
+	public void displayTasks() {
+		
+		
+		for(int i=0;i<tasks.length;i++)
+		{
+			if(tasks[i]!=null) {
+			System.out.println(tasks[i]);
+			}
+		}
+	}
+	
+	public boolean updateTaskByName(String tas) {
+		
+		for(int i=0;i<tasks.length;i++)
+		{
+			if(tasks[i]!=null) {
+				
+			
+			if(tasks[i].getTaskName().equals(tas)) {
+				System.out.println("before update");
+				System.out.println(tasks[i]);
+				System.out.println("Enter status of "+tasks[i].getTaskName());
+				String status=sc.next();
+			
+				tasks[i].setStatus(status);
+				System.out.println("Updated tasks");
+				System.out.println(tasks[i]);
+				
+				return true;
+			}
+			}
+		}
+		return false;
+	}
+	
+	
+	
+	public boolean removeTaskByName(String name) {
+		
+		for(int i=0;i<tasks.length;i++)
+		{
+			if(tasks[i]!=null) {
+				
+			
+			if(tasks[i].getTaskName().equals(name)) {
+				System.out.println("Removed task");
+				System.out.println(tasks[i]);
+				tasks[i]=null;
+				return true;
+			}
+			}
+		}
+		return false;
+	}
 
-	    }
-	    public void display() {
-	        for (int i = 0; i < count; i++) {
-	            if (ts[i].getStatus().equals(stat)) {
-	                System.out.println(ts[i]);
-	            }
-	        }
-	        public void delete(String l) {
-	            for (int i = 0; i < count; i++) {
-	                if (ts[i].getTask_name().equals(l) || ts[i].equals(null)) {
-	                    ts[i] = null;
-	                    count = count - 1;
-	                } else
-	                    System.out.println(ts[i]);
-	            }
-	        }
-   }
 }
-

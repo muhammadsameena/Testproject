@@ -1,58 +1,42 @@
 package M5;
 
 public class Task {
-	String task_name;
-	String task_description;
-	String date;
-	String status;
+	private String taskName;
+	private String status;
+	private String descp;
+	private String dueDate;
 	
-	public Task(String task_name, String task_description, String date, String status) {
-		super();
-		this.task_name = task_name;
-		this.task_description = task_description;
-		this.date = date;
-		this.status = status;
+	public String getTaskName() {
+		return taskName;
 	}
-
-	public String getTask_name() {
-		return task_name;
+	public void setTaskName(String taskName) {
+		this.taskName = taskName;
 	}
-
-	public void setTask_name(String task_name) {
-		this.task_name = task_name;
-	}
-
-	public String getTask_description() {
-		return task_description;
-	}
-
-	public void setTask_description(String task_description) {
-		this.task_description = task_description;
-	}
-
-	public String getDate() {
-		return date;
-	}
-
-	public void setDate(String date) {
-		this.date = date;
-	}
-
 	public String getStatus() {
 		return status;
 	}
-
 	public void setStatus(String status) {
 		this.status = status;
 	}
-
-	//@Override
-    public String toString() {
-    	return "Task{" +
-                "task_name='" + task_name + '\'' +
-                ", task_description='" + task_description + '\'' +
-                ", date='" + date + '\'' +
-                 ", status='" +status + '\'' +
-                '}';
-    }
+	public String getDescp() {
+		return descp;
+	}
+	public void setDescp(String descp) {
+		this.descp = descp;
+	}
+	public String getDueDate() {
+		return dueDate;
+	}
+	public void setDueDate(String dueDate) {
+		this.dueDate = dueDate;
+	}
+	@Override
+	public String toString() {
+		return "Task [taskName=" + taskName + ", status=" + status + ", descp=" + descp + ", dueDate=" + dueDate + "]";
+	}
+	
+	
+	
 }
+
+	
